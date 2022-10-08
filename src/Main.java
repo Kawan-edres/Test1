@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main  {
@@ -31,30 +29,86 @@ public class Main  {
 //
 //        }
 
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Create an acount ");
+        System.out.print("Enter Email or phone : ");
+        String email=scan.nextLine();
+        System.out.print("Enter Your Password : ");
+        String password=scan.nextLine();
 
         try{
             FileWriter pen = new FileWriter("text.txt");
-            for(int i=10;i<100;i++){
-                pen.write("word"+i+"\n");
-            }
+                pen.write(email+"\n");
+                pen.write(password);
+
             pen.close();
-            System.out.println("put down the pen i finshed writing ");
         }catch(IOException e){
             e.printStackTrace();
-
         }
 
 
-        try {
-            File file = new File("text.txt");
-            Scanner paper = new Scanner(file);
-            while (paper.hasNextLine()) {
-                System.out.println(paper.nextLine());
-            }
-        }catch(IOException e){
-            e.printStackTrace();
+        try
+        {
 
+            //the file to be opened for reading
+            FileInputStream fis=new FileInputStream("text.txt");
+            Scanner sc=new Scanner(fis);    //file to be scanned
+            //returns true if there is another line to read
+            while(sc.hasNextLine())
+            {
+
+                System.out.println(sc.nextLine());      //returns the line that was skipped
             }
+            sc.close();     //closes the scanner
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+
+
+//        try {
+//            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("text.txt")));
+//
+//            String line = null;
+//
+//            while ((line=bufferedReader.readLine())!=null) {
+//                System.out.println(line);
+//            }
+//
+//        }catch (IOException e){
+//            e.printStackTrace();
+//
+//        }
+
+//
+//        System.out.println("you wanna login ");
+//
+//        System.out.println("enter email : ");
+//        String email2=scan.nextLine();
+//        System.out.println("enter password : ");
+//        String password2=scan.nextLine();
+//
+//        try {
+//            BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("text.txt")));
+//
+//            String line = null;
+//
+//            while ((line=bufferedReader.readLine())!=null) {
+//                System.out.println(line);
+//            }
+//
+//        }catch (IOException e){
+//            e.printStackTrace();
+//
+//        }
+
+
+
+
+
+
+
 
 
 
